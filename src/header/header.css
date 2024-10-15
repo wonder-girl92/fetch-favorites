@@ -1,0 +1,23 @@
+.header {
+    max-width: 100vw;
+    height: 60px;
+    background-color: cornflowerblue;
+    color: #fff;
+    padding: 0 80px;
+    margin-bottom: 30px;
+    align-items: center;
+}
+
+.header button {
+    border-style: none;
+    background-color: cornflowerblue;
+    height: 100%;
+    color: white;
+    margin-right: 50px;
+}
+
+button:hover {
+    background-color: blue;
+}
+
+
