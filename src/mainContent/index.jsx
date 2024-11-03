@@ -7,7 +7,7 @@ import { TbHeartFilled } from 'react-icons/tb'
 export default function MainContent ({products, setProducts, favorites, setFavorites}) {
   const [count, setCount] = useState(0)
 
-  async function fetchCats () {
+  async function fetchProducts () {
     try {
       const resp = await fetch(`https://dummyjson.com/products?limit=15&skip=${count === 0 ? 0 : count * 15}`)
       const res = await resp.json()
@@ -18,7 +18,7 @@ export default function MainContent ({products, setProducts, favorites, setFavor
     }
   }
 
-  useEffect(() => {fetchCats()}, [count])
+  useEffect(() => {fetchProducts()}, [count])
 
   function toggleFavorite (productId) {
     if(favorites.includes(productId)) {
