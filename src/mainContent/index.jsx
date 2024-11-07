@@ -1,37 +1,18 @@
-import { useEffect, useState } from 'react'
+
 import './mainContent.css'
 import { FaHeart } from 'react-icons/fa';
 import { TbHeartFilled } from 'react-icons/tb'
 
 
-export default function MainContent ({products, setProducts, favorites, setFavorites}) {
-  const [count, setCount] = useState(0)
-
-  async function fetchProducts () {
-    try {
-      const resp = await fetch(`https://dummyjson.com/products?limit=15&skip=${count === 0 ? 0 : count * 15}`)
-      const res = await resp.json()
-      setProducts([...products, ...res.products])
-      console.log(res.products)
-    } catch (err) {
-      console.log(err)
-    }
-  }
-
-  useEffect(() => {fetchProducts()}, [count])
-
-  function toggleFavorite (productId) {
-    if(favorites.includes(productId)) {
-      setFavorites(favorites.filter((id) => id !== productId))
-    } else {
-      setFavorites([...favorites, productId])
-    }
-  }
-
+export default function MainContent ({products, count, setCount, favorites, toggleFavorite}) {
+  console.log(favorites)
   return (
     <div className="content-container">
       <div className="content">
-        {products.map((item)=> (<div className="content-cell" key={item.id}><img src={item.thumbnail} alt={item.title}/>
+        {products.map((item)=> (
+          <div className="content-cell"
+            key={item.id}>
+            <img src={item.thumbnail} alt={item.title}/>
         <p>{item.title}</p>
          <span
            className="add-item"
@@ -43,7 +24,6 @@ export default function MainContent ({products, setProducts, favorites, setFavor
                <FaHeart size={19}/>
            )
            }
-
          </span>
         </div>))}
       </div>
